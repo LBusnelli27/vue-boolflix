@@ -1,10 +1,6 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-12 d-flex p-5">
-        <input v-model="inputSearch" @keyup.enter="searchApiTheMovie()" class="me-2" type="text">
-        <button @click="searchApiTheMovie()" class="btn btn-primary">Search</button>
-      </div>
       <div class="col-3 px-4">
         <h3>Title</h3>
         <ul>
@@ -49,18 +45,23 @@ export default {
 
   data() {
     return {
-      inputSearch : '',
       listOfSearched : []
     }
   },
 
+  mounted() {
+    this.$root.$on('search', (input) => {
+      this.searchApiTheMovie(input);
+    })
+  },
+
   methods: {
-    searchApiTheMovie() {
+    searchApiTheMovie(inputText) {
       axios
-      .get('https://api.themoviedb.org/3/search/movie?api_key=8e367e7bbe971330f3e274f6b4bddf1e&query=' + this.inputSearch.replace(/\s/g , "+"))
+      .get('https://api.themoviedb.org/3/search/movie?api_key=8e367e7bbe971330f3e274f6b4bddf1e&query=' + inputText.replace(/\s/g , "+"))
       .then(response => (this.listOfSearched = response.data.results));
     }
-  }
+  },
 }
 </script>
 
