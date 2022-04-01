@@ -1,10 +1,12 @@
 <template>
   <div>
+    <!-- Film part -->
     <div class="row">
+      <h2 class="text-center text-info mb-3">Film</h2>
       <div class="col-3 px-4">
         <h3>Titolo</h3>
         <ul>
-          <li class="mb-2" v-for="(element, index) in listOfSearched" :key="index">
+          <li class="mb-2" v-for="(element, index) in listOfSearchedFilms" :key="index">
             {{ element.title }}
           </li>
         </ul>
@@ -13,7 +15,7 @@
       <div class="col-3 px-4">
         <h3>Titolo originale</h3>
         <ul>
-          <li class="mb-2" v-for="(element, index) in listOfSearched" :key="index">
+          <li class="mb-2" v-for="(element, index) in listOfSearchedFilms" :key="index">
             {{ element.original_title }}
           </li>
         </ul>
@@ -22,12 +24,16 @@
       <div class="col-3 px-4">
         <h3>Lingua</h3>
         <ul>
-          <li class="mb-2" v-for="(element, index) in listOfSearched" :key="index">
-            <img class="my-lang-flag" v-if="element.original_language == 'it'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bandiera_italiana_foto.svg/2560px-Bandiera_italiana_foto.svg.png" alt="Bandiera italiana">
-            <img class="my-lang-flag" v-if="element.original_language == 'en'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png" alt="Bandiera inglese">
-            <img class="my-lang-flag" v-if="element.original_language == 'fr'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/280px-Flag_of_France.svg.png" alt="Bandiera fracese">
-            <img class="my-lang-flag" v-if="element.original_language == 'de'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/2560px-Flag_of_Germany.svg.png" alt="Bandiera tedesca">
-            <span v-if="element.original_language != 'it' & element.original_language != 'en' & element.original_language != 'fr' & element.original_language != 'de'">{{ element.original_language }}</span>
+          <li class="mb-2" v-for="(element, index) in listOfSearchedFilms" :key="index">
+            <img class="my-lang-flag" v-if="element.original_language == 'it'" 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bandiera_italiana_foto.svg/2560px-Bandiera_italiana_foto.svg.png" alt="Bandiera italiana">
+            <img class="my-lang-flag" v-if="element.original_language == 'en'" 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png" alt="Bandiera inglese">
+            <img class="my-lang-flag" v-if="element.original_language == 'fr'" 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/280px-Flag_of_France.svg.png" alt="Bandiera fracese">
+            <img class="my-lang-flag" v-if="element.original_language == 'de'" 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/2560px-Flag_of_Germany.svg.png" alt="Bandiera tedesca">
+            <span class="text-uppercase" v-if="element.original_language != 'it' & element.original_language != 'en' & element.original_language != 'fr' & element.original_language != 'de'">{{ element.original_language }}</span>
           </li>
         </ul>
       </div>
@@ -35,7 +41,56 @@
       <div class="col-3 px-4">
         <h3>Voto</h3>
         <ul>
-          <li class="mb-2" v-for="(element, index) in listOfSearched" :key="index">
+          <li class="mb-2" v-for="(element, index) in listOfSearchedFilms" :key="index">
+            {{ element.vote_average }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- TV Series part -->
+    <div class="row">
+      <h2 class="text-center text-info mb-3">Serie</h2>
+      <div class="col-3 px-4">
+        <h3>Titolo</h3>
+        <ul>
+          <li class="mb-2" v-for="(element, index) in listOfSearchedSeries" :key="index">
+            {{ element.name }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-3 px-4">
+        <h3>Titolo originale</h3>
+        <ul>
+          <li class="mb-2" v-for="(element, index) in listOfSearchedSeries" :key="index">
+            {{ element.original_name }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-3 px-4">
+        <h3>Lingua</h3>
+        <ul>
+          <li class="mb-2" v-for="(element, index) in listOfSearchedSeries" :key="index">
+            <img class="my-lang-flag" v-if="element.original_language == 'it'" 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bandiera_italiana_foto.svg/2560px-Bandiera_italiana_foto.svg.png" alt="Bandiera italiana">
+            <img class="my-lang-flag" v-if="element.original_language == 'en'" 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png" alt="Bandiera inglese">
+            <img class="my-lang-flag" v-if="element.original_language == 'fr'" 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/280px-Flag_of_France.svg.png" alt="Bandiera fracese">
+            <img class="my-lang-flag" v-if="element.original_language == 'de'" 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/2560px-Flag_of_Germany.svg.png" alt="Bandiera tedesca">
+            <span class="text-uppercase" v-if="element.original_language != 'it' & element.original_language != 'en' & element.original_language != 'fr' & element.original_language != 'de'">{{ element.original_language }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-3 px-4">
+        <h3>Voto</h3>
+        <ul>
+          <li class="mb-2" v-for="(element, index) in listOfSearchedSeries" :key="index">
             {{ element.vote_average }}
           </li>
         </ul>
@@ -52,7 +107,8 @@ export default {
 
   data() {
     return {
-      listOfSearched : []
+      listOfSearchedFilms : [],
+      listOfSearchedSeries : []
     }
   },
 
@@ -66,7 +122,11 @@ export default {
     searchApiTheMovie(inputText) {
       axios
       .get('https://api.themoviedb.org/3/search/movie?api_key=8e367e7bbe971330f3e274f6b4bddf1e&query=' + inputText.replace(/\s/g , "+"))
-      .then(response => (this.listOfSearched = response.data.results));
+      .then(response => (this.listOfSearchedFilms = response.data.results));
+
+      axios
+      .get('https://api.themoviedb.org/3/search/tv?api_key=8e367e7bbe971330f3e274f6b4bddf1e&query=' + inputText.replace(/\s/g , "+"))
+      .then(response => (this.listOfSearchedSeries = response.data.results));
     }
   },
 }
