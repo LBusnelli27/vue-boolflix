@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 bg-dark">
+  <div class="p-4 bg-dark mb-3">
     <nav class="navbar navbar-light">
       <div class="d-flex">
           <input v-model="inputSearch" @keyup.enter="sendInputSearch(inputSearch)" class="me-2" type="text" placeholder="Cerca Film o Serie TV">
@@ -28,6 +28,6 @@ export default {
 }
 </script>
 
-<style>
+<style  lang="scss" scoped>
 
 </style>
