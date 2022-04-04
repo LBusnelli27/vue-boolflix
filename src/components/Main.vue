@@ -51,6 +51,8 @@
         <ul>
           <li class="mb-2" v-for="(element, index) in listOfSearchedFilms" :key="index">
             {{ element.vote_average }}
+            <i v-for="(element, index) in voteTranform(element.vote_average)" :key="index" class="fa-solid fa-star"></i>
+            <i v-for="(element, index) in 5 - voteTranform(element.vote_average)" :key="index" class="fa-regular fa-star"></i>
           </li>
         </ul>
       </div>
@@ -108,8 +110,8 @@
         <ul>
           <li class="mb-2" v-for="(element, index) in listOfSearchedSeries" :key="index">
             {{ element.vote_average }}
-            {{ voteTranform(element.vote_average) }}
-            <i class="fa-regular fa-star"></i>
+            <i v-for="(element, index) in voteTranform(element.vote_average)" :key="index" class="fa-solid fa-star"></i>
+            <i v-for="(element, index) in 5 - voteTranform(element.vote_average)" :key="index" class="fa-regular fa-star"></i>
           </li>
         </ul>
       </div>
@@ -155,8 +157,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  import "@fortawesome/vue-fontawesome";
-
   li {
     .my-lang-flag {
       width: 30px;
