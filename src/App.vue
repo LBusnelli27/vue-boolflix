@@ -23,5 +23,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+  #app {
+    min-width: 800px;
+  }
 </style>
