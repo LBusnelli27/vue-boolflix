@@ -1,5 +1,13 @@
 <template>
   <div>
+    <!-- Thumbnail film part -->
+    <div class="row">
+      <h2 class="text-center text-info mb-3">Thumbnail film images</h2>
+      <div class="col-12 flex-wrap">
+        <img v-for="(element, index) in listOfSearchedFilms" :key="index" :src="'https://image.tmdb.org/t/p/w185' + element.poster_path" :alt="element.original_title + ' image'">
+      </div>
+    </div>
+
     <!-- Film part -->
     <div class="row">
       <h2 class="text-center text-info mb-3">Film</h2>
@@ -49,6 +57,14 @@
     </div>
 
 
+    <!-- Thumbnail series part -->
+    <div class="row">
+      <h2 class="text-center text-info mb-3">Thumbnail series images</h2>
+      <div class="col-12 flex-wrap">
+        <img v-for="(element, index) in listOfSearchedSeries" :key="index" :src="'https://image.tmdb.org/t/p/w185' + element.poster_path" :alt="element.original_title + ' image'">
+      </div>
+    </div>
+
     <!-- TV Series part -->
     <div class="row">
       <h2 class="text-center text-info mb-3">Serie</h2>
@@ -92,6 +108,8 @@
         <ul>
           <li class="mb-2" v-for="(element, index) in listOfSearchedSeries" :key="index">
             {{ element.vote_average }}
+            {{ voteTranform(element.vote_average) }}
+            <i class="fa-regular fa-star"></i>
           </li>
         </ul>
       </div>
@@ -108,7 +126,7 @@ export default {
   data() {
     return {
       listOfSearchedFilms : [],
-      listOfSearchedSeries : []
+      listOfSearchedSeries : [],
     }
   },
 
@@ -127,12 +145,18 @@ export default {
       axios
       .get('https://api.themoviedb.org/3/search/tv?api_key=8e367e7bbe971330f3e274f6b4bddf1e&query=' + inputText.replace(/\s/g , "+"))
       .then(response => (this.listOfSearchedSeries = response.data.results));
+    },
+
+    voteTranform(originalVote) {
+      return parseInt(originalVote / 2);
     }
   },
 }
 </script>
 
 <style lang="scss" scoped>
+  import "@fortawesome/vue-fontawesome";
+
   li {
     .my-lang-flag {
       width: 30px;
