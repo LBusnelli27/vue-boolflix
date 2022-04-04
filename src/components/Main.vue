@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Card />
     <!-- Thumbnail film part -->
     <div class="row">
       <h2 class="text-center text-info mb-3">Thumbnail film images</h2>
@@ -122,8 +123,14 @@
 <script>
 import axios from 'axios';
 
+import Card from './Card.vue';
+
 export default {
   name : 'MainComponent',
+  
+  components: {
+    Card
+  },
 
   data() {
     return {
