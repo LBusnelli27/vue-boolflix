@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Film Section -->
-    <h2 class="text-center text-uppercase text-white">Film</h2>
+    <h2 v-if="listOfSearchedFilms != 0" class="text-center text-uppercase text-white">Film</h2>
     <div class="row row-cols-3 mb-5">
       <div v-for="(element, index) in listOfSearchedFilms" :key="index" class="col">
         <div class="my-card bg-dark">
@@ -27,7 +27,7 @@
     </div>
 
     <!-- TV Series Section -->
-    <h2 class="text-center text-uppercase text-white">Serie TV</h2>
+    <h2 v-if="listOfSearchedSeries != 0" class="text-center text-uppercase text-white">Serie TV</h2>
     <div class="row row-cols-3">
       <div v-for="(element, index) in listOfSearchedSeries" :key="index" class="col">
         <div class="my-card bg-dark">
